@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
+
     <title>Proyecto Primer Parcial</title>
     <link rel="stylesheet" href="css/styles.css">
 </head>
@@ -21,16 +21,15 @@
                 Mesa 3
             </th>
         </tr>
-
-        <tr>
-            <td align="center">
-                <img src="images/billarOFF.png" width="50%" height="50%" alt="Mesa 1">
+        <tr align="center">
+            <td>
+                <img src="images/billarOFF.png" width="50%" height="50%" id="mesa1" alt="Mesa 1" onclick="cambiar(this.id);">
             </td>
-            <td align="center">
-                <img src="images/billarOFF.png" width="50%" height="50%" alt="Mesa 2">
+            <td>
+                <img src="images/billarOFF.png" width="50%" height="50%" id="mesa2" alt="Mesa 2" onclick="cambiar(this.id);">
             </td>
-            <td align="center">
-                <img src="images/billarOFF.png" width="50%" height="50%" alt="Mesa 3">
+            <td>
+                <img src="images/billarOFF.png" width="50%" height="50%" id="mesa3" alt="Mesa 3" onclick="cambiar(this.id);">
             </td>
         </tr>
         <tr>
@@ -79,6 +78,22 @@
             </td>
         </tr>
     </table>
+
+
+    <script>
+        function cambiar(elemento){
+            //recibe el id del documento y creamos una variable para manipularlo
+            let mesaBillar = document.getElementById(elemento);
+
+            //alert(mesaBillar);
+            //Si la mesa esta apagada, entonces se prende y viceversa
+            if(mesaBillar.src.match("images/billarOFF.png")){
+                mesaBillar.src = "images/billarON.png";
+            } else{
+                mesaBillar.src = "images/billarOFF.png";
+            }
+        }
+    </script>
     
 </body>
 </html>
