@@ -32,15 +32,21 @@
                 <img src="images/billarOFF.png" width="50%" height="50%" id="mesa3" alt="Mesa 3" onclick="cambiar(this.id);">
             </td>
         </tr>
-        <tr>
+        <tr align="center">
             <td>
-
+                Hora de inicio: <span id="relojInicio1"></span> <br>
+                Hora de final: <span id="relojFin1"></span> <br>
+                Total: <span id="total1"></span> 
             </td>
             <td>
-                
+                Hora de inicio: <span id="relojInicio2"></span> <br>
+                Hora de final: <span id="relojFin2"></span> <br>
+                Total: <span id="total2"></span> 
             </td>
             <td>
-                
+                Hora de inicio: <span id="relojInicio3"></span> <br>
+                Hora de final: <span id="relojFin3"></span> <br>
+                Total: <span id="total3"></span> 
             </td>
         </tr>
 
@@ -82,17 +88,43 @@
 
     <script>
         function cambiar(elemento){
-            //recibe el id del documento y creamos una variable para manipularlo
+            //recibe el id del elemento(imagen especifica) y creamos variables para manipular los elementos asociados
             let mesaBillar = document.getElementById(elemento);
+            let horaInicial = document.getElementById("relojInicio" + elemento[elemento.length - 1]);
+            let horaFinal = document.getElementById("relojFin" + elemento[elemento.length - 1]);
+            let total = document.getElementById("total" + elemento[elemento.length - 1]);
 
             //alert(mesaBillar);
             //Si la mesa esta apagada, entonces se prende y viceversa
             if(mesaBillar.src.match("images/billarOFF.png")){
                 mesaBillar.src = "images/billarON.png";
+
+                //checa si el reloj ya habia sido encendido y prende el reloj de inicio
+                if(horaInicial.innerHTML != ""){
+                    horaFinal.innerHTML = "";
+                    total.innerHTML = 50;
+                }
+                horaInicial.innerHTML = horaActual();
+                total.innerHTML = 50;
             } else{
                 mesaBillar.src = "images/billarOFF.png";
+
+                //imprime el reloj de final
+                horaFinal.innerHTML = horaActual();
+                total.innerHTML = 50;
             }
+            
         }
+
+        function horaActual(){
+            momentoActual = new Date();
+            hora = momentoActual.getHours();
+            minuto = momentoActual.getMinutes();
+
+            horaImprimible = hora + " : " + minuto;
+
+            return horaImprimible;
+        } 
     </script>
     
 </body>
