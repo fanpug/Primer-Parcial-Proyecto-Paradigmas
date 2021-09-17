@@ -1,4 +1,4 @@
-# Proyecto Tercer Parcial
+# Proyecto Primer Parcial
 Este repositorio fue creado para el proyecto del primer parcial de la materia de Paradigmas de Programacion por Humberto Alejandro Navarro Andujo.
 
 
