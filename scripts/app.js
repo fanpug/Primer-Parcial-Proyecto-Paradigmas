@@ -16,16 +16,24 @@ function cambiar(elemento){
         horaFinal.innerHTML = "*En uso*";
         total.innerHTML = "0.00$";
 
+        //Actualiza en tiempo real el total
+        setInterval(()=>{
+            let duracionUso = calcularDiferencia(horaInicial.innerHTML, horaActual());
+            total.innerHTML = ((duracionUso * 50) / 60).toFixed(2) + "$";
+        },5000);
+
     } else{
         mesaBillar.src = "images/billarOFF.png";
 
         //imprime el reloj de final
         horaFinal.innerHTML = horaActual();
 
-        //se calcula cuanto tiempo se utilizó la mesa de billar en minutos y luego se imprime
-        let duracionUso = calculardiferencia(horaInicial.innerHTML, horaFinal.innerHTML);
+        clearInterval(intervalID);
 
-        total.innerHTML = ((duracionUso * 50)/ 60).toFixed(2) + "$";
+        //se calcula cuanto tiempo se utilizó la mesa de billar en minutos y luego se imprime
+        let duracionUso = calcularDiferencia(horaInicial.innerHTML, horaFinal.innerHTML);
+
+        total.innerHTML = ((duracionUso * 50) / 60).toFixed(2) + "$";
     }
     
 }
@@ -41,7 +49,7 @@ function horaActual(){
 }
 
 //se recibe una hora inicial y final y se devuelve la diferencia entre ellas en minutos
-function calculardiferencia(a, b){
+function calcularDiferencia(a, b){
     let hora1 = b.split(":"),
         hora2 = a.split(":"),
         t1 = new Date(),
@@ -54,3 +62,4 @@ function calculardiferencia(a, b){
 
     return Math.floor((diff/1000)/60);
 }
+
