@@ -7,9 +7,12 @@
 
     <title>Proyecto Primer Parcial</title>
     <link rel="stylesheet" href="css/styles.css">
+
+    <script src="scripts/app.js"></script>
 </head>
 <body>
-    <table border="2" align="center">
+    <br><br>
+    <table border="0" align="center">
         <tr>
             <th>
                 Mesa 1
@@ -23,13 +26,13 @@
         </tr>
         <tr align="center">
             <td>
-                <img src="images/billarOFF.png" width="50%" height="50%" id="mesa1" alt="Mesa 1" onclick="cambiar(this.id);">
+                <img src="images/billarOFF.png" class="MesaBillar" id="mesa1" alt="Mesa 1" onclick="cambiar(this.id);">
             </td>
             <td>
-                <img src="images/billarOFF.png" width="50%" height="50%" id="mesa2" alt="Mesa 2" onclick="cambiar(this.id);">
+                <img src="images/billarOFF.png" class="MesaBillar" id="mesa2" alt="Mesa 2" onclick="cambiar(this.id);">
             </td>
             <td>
-                <img src="images/billarOFF.png" width="50%" height="50%" id="mesa3" alt="Mesa 3" onclick="cambiar(this.id);">
+                <img src="images/billarOFF.png" class="MesaBillar" id="mesa3" alt="Mesa 3" onclick="cambiar(this.id);">
             </td>
         </tr>
         <tr align="center">
@@ -63,13 +66,13 @@
         </tr>
         <tr align="center">
             <td>
-                <img src="images/billarOFF.png" width="50%" height="50%" id="mesa4" alt="Mesa 4" onclick="cambiar(this.id);">
+                <img src="images/billarOFF.png" class="MesaBillar" id="mesa4" alt="Mesa 4" onclick="cambiar(this.id);">
             </td>
             <td>
-                <img src="images/billarOFF.png" width="50%" height="50%" id="mesa5" alt="Mesa 5" onclick="cambiar(this.id);">
+                <img src="images/billarOFF.png" class="MesaBillar" id="mesa5" alt="Mesa 5" onclick="cambiar(this.id);">
             </td>
             <td>
-                <img src="images/billarOFF.png" width="50%" height="50%" id="mesa6" alt="Mesa 6" onclick="cambiar(this.id);">
+                <img src="images/billarOFF.png" class="MesaBillar" id="mesa6" alt="Mesa 6" onclick="cambiar(this.id);">
             </td>
         </tr>
         <tr align="center">
@@ -90,68 +93,6 @@
             </td>
         </tr>
     </table>
-
-
-    <script>
-        function cambiar(elemento){
-            //recibe el id del elemento(imagen especifica) y creamos variables para manipular los elementos asociados
-            let mesaBillar = document.getElementById(elemento);
-            let horaInicial = document.getElementById("relojInicio" + elemento[elemento.length - 1]);
-            let horaFinal = document.getElementById("relojFin" + elemento[elemento.length - 1]);
-            let total = document.getElementById("total" + elemento[elemento.length - 1]);
-
-            //alert(mesaBillar);
-            //Si la mesa esta apagada, entonces se prende y viceversa
-            if(mesaBillar.src.match("images/billarOFF.png")){
-                mesaBillar.src = "images/billarON.png";
-
-                //prende el reloj de inicio y marca la mesa como en uso
-                horaInicial.innerHTML = horaActual();
-                horaFinal.innerHTML = "*En uso*";
-                total.innerHTML = "0.00$";
-            } else{
-                mesaBillar.src = "images/billarOFF.png";
-
-                //imprime el reloj de final
-                horaFinal.innerHTML = horaActual();
-
-                a = horaInicial.innerHTML;
-                b = horaFinal.innerHTML;
-
-                c = calculardiferencia(a, b);
-
-                total.innerHTML = ((c * 50)/ 60).toFixed(2) + "$";
-            }
-            
-        }
-
-        function horaActual(){
-            momentoActual = new Date();
-            hora = momentoActual.getHours();
-            minuto = momentoActual.getMinutes();
-            segundo = momentoActual.getSeconds();
-
-            horaImprimible = hora + ":" + minuto + ":" + segundo;
-
-            return horaImprimible;
-        }
-
-        function calculardiferencia(){
-            var hora1 = b.split(":"),
-                hora2 = a.split(":"),
-                t1 = new Date(),
-                t2 = new Date();
-        
-            t1.setHours(hora1[0], hora1[1], hora1[2]);
-            t2.setHours(hora2[0], hora2[1], hora2[2]);
-
-            var diff = Math.abs(t1 - t2); 
-            var minutes = Math.floor((diff/1000)/60);
-
-            return minutes;
-        }
-
-    </script>
     
     <h4>Hecho por Humberto Alejandro Navarro Andujo       320669</h4>
 </body>
