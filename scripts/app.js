@@ -1,3 +1,4 @@
+//cambia las mesas de apagada a prendida y viceversa
 function cambiar(elemento){
     //recibe el id del elemento(imagen especifica) y creamos variables para manipular los elementos asociados
     let mesaBillar = document.getElementById(elemento);
@@ -5,7 +6,7 @@ function cambiar(elemento){
     let horaFinal = document.getElementById("relojFin" + elemento[elemento.length - 1]);
     let total = document.getElementById("total" + elemento[elemento.length - 1]);
 
-    //alert(mesaBillar);
+
     //Si la mesa esta apagada, entonces se prende y viceversa
     if(mesaBillar.src.match("images/billarOFF.png")){
         mesaBillar.src = "images/billarON.png";
@@ -21,7 +22,7 @@ function cambiar(elemento){
         //imprime el reloj de final
         horaFinal.innerHTML = horaActual();
 
-        //se calcula cuanto tiempo se utilizó la mesa de billar en minutos
+        //se calcula cuanto tiempo se utilizó la mesa de billar en minutos y luego se imprime
         let duracionUso = calculardiferencia(horaInicial.innerHTML, horaFinal.innerHTML);
 
         total.innerHTML = ((duracionUso * 50)/ 60).toFixed(2) + "$";
@@ -36,12 +37,10 @@ function horaActual(){
     minuto = momentoActual.getMinutes();
     segundo = momentoActual.getSeconds();
 
-    horaImprimible = hora + ":" + minuto + ":" + segundo;
-
-    return horaImprimible;
+    return hora + ":" + minuto + ":" + segundo;
 }
 
-//se recibe la hora inicial y final del uso de la mesa y se devuelve la diferencia en minutos
+//se recibe una hora inicial y final y se devuelve la diferencia entre ellas en minutos
 function calculardiferencia(a, b){
     let hora1 = b.split(":"),
         hora2 = a.split(":"),
